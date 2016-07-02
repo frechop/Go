@@ -4,13 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Go"
+        xmlns:goBoard ="clr-namespace:Go"
         mc:Ignorable="d"
         Title="MainWindow" MinHeight="1000" MinWidth="1000"
         Background="LightGray"
         HorizontalAlignment="Stretch"
         VerticalAlignment="Stretch"
-        >
-    <Grid>
         
+        >
+    <Grid Margin="0,0,0,-504">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Viewbox Grid.Row="0">
+            <goBoard:BoardPainter
+                BoardSize="{Binding ElementName=slBoardSize, Path=Value}"
+                MouseHoverType="Stone"
+                x:Name="BoardPainter"
+                MovePlayed="BoardPainter_MovePlayed">
+            </goBoard:BoardPainter>
+        </Viewbox>
     </Grid>
 </Window>

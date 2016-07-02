@@ -9,7 +9,7 @@ using System.Windows.Media;
 
 namespace Go
 {
-    class BoardPainter : FrameworkElement
+   public class BoardPainter : FrameworkElement
     {
         public static readonly RoutedEvent MovePlayedEvent = EventManager.RegisterRoutedEvent("MovePlayed", RoutingStrategy.Bubble, typeof(MovePlayedEventHandler), typeof(BoardPainter));
         public static readonly DependencyProperty BoardSizeProperty = DependencyProperty.Register("BoardSize", typeof(int), typeof(BoardPainter), new FrameworkPropertyMetadata(9, new PropertyChangedCallback(OnBoardSizeChanged)), new ValidateValueCallback(BoardSizeValidateCallback));
@@ -46,7 +46,7 @@ namespace Go
 
         public BoardPainter()
         {
-            Resources.Source = new Uri("pack://application:,,,/GoBoard;component/GoBoardPainterResources.xaml");
+            Resources.Source = new Uri("pack://application:,,,/Go;component/BoardPainterResources.xaml");
 
             _BlackStoneBrush = (Brush)TryFindResource("blackStoneBrush");
             _WhiteStoneBrush = (Brush)TryFindResource("whiteStoneBrush");

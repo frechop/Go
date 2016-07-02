@@ -72,6 +72,10 @@
     </ApplicationDefinition>
     <Compile Include="BoardAnnotation.cs" />
     <Compile Include="BoardEnums.cs" />
+    <Page Include="BoardPainterResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Compile Include="RoutedMovePlayedEventArgs.cs" />
     <Compile Include="Stone.cs" />
     <Page Include="MainWindow.xaml">
