@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Go
 {
-    class Class1
+    public enum Stone : byte
     {
-        int x = 4;
+        Black = 0,
+        White = 1,
+        Empty = 2,
+        Boundary = 3
     }
 }
