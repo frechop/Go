@@ -6,19 +6,19 @@
         xmlns:local="clr-namespace:Go"
         xmlns:goBoard ="clr-namespace:Go"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="1000" MinWidth="1000"
+        Title="MainWindow"
+        Height="800"
+        Width="1200"
         Background="LightGray"
-        HorizontalAlignment="Stretch"
-        VerticalAlignment="Stretch"
-        
+       
         >
-    <Grid Margin="0,0,0,-504">
+    <Grid Margin="0,0,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Viewbox Grid.Row="0">
+        <Viewbox Grid.Row="0" Width="500px" Height="500">
             <goBoard:BoardPainter
                 BoardSize="{Binding ElementName=slBoardSize, Path=Value}"
                 MouseHoverType="Stone"

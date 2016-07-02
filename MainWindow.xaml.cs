@@ -10,7 +10,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Go
@@ -23,6 +22,27 @@ namespace Go
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void BoardPainter_MovePlayed(object sender, RoutedMovePlayedEventArgs e)
+        {
+            if (!BoardPainter.StoneList.ContainsKey(e.Position))
+            {
+                BoardPainter.StoneList.Add(new BoardPoint(e.Position.X, e.Position.Y), e.StoneColor);
+                BoardPainter.ToPlay = e.StoneColor ^ Stone.White;
+            }
+            BoardPainter.Redraw();
+        }
+
+        private void rdRectangle_Checked(object sender, RoutedEventArgs e)
+        {
+            BoardPainter.MouseHoverType = BoardHoverType.None;
+        }
+
+        private void rdStone_Checked(object sender, RoutedEventArgs e)
+        {
+            if (BoardPainter != null)
+                BoardPainter.MouseHoverType = BoardHoverType.Stone;
         }
     }
 }
