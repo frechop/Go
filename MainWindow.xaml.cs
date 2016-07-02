@@ -32,6 +32,7 @@ namespace Go
                 BoardPainter.ToPlay = e.StoneColor ^ Stone.White;
             }
             BoardPainter.Redraw();
+            AnalysisBoard.Redraw();
         }
 
         private void rdRectangle_Checked(object sender, RoutedEventArgs e)
