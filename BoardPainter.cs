@@ -28,6 +28,7 @@ namespace Go
         private Dictionary<BoardPoint, Stone> _StoneList = new Dictionary<BoardPoint, Stone>();
         private ObservableCollection<BoardAnnotation> _AnnotationsList = new ObservableCollection<BoardAnnotation>();
         private Stone _ToPlay = Stone.Black;
+        public List<List<BoardPoint>> Chains = new List<List<BoardPoint>>();
 
         private DrawingVisual _BoardVisual, _StonesVisual, _StarPointVisual, _CoordinatesVisual, _AnnotationVisual, _MouseHoverVisual;
         private Brush _BlackStoneBrush, _WhiteStoneBrush, _BoardBrush, _StoneShadowBrush, _BlackStoneShadowBrush, _WhiteStoneShadowBrush;
@@ -405,5 +406,10 @@ namespace Go
                 DrawAnnotations();
             }
         }
+
+        //Logic
+       
+
+
     }
 }

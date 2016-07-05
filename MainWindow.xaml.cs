@@ -28,7 +28,11 @@ namespace Go
         {
             if (!BoardPainter.StoneList.ContainsKey(e.Position))
             {
-                BoardPainter.StoneList.Add(new BoardPoint(e.Position.X, e.Position.Y), e.StoneColor);
+                BoardPoint currentPoint = new BoardPoint(e.Position.X, e.Position.Y);
+                BoardPainter.StoneList.Add(currentPoint, e.StoneColor);
+
+                getNeighbors(currentPoint);
+
                 BoardPainter.ToPlay = e.StoneColor ^ Stone.White;
                 AnalysisBoard.ToPlay = e.StoneColor ^ Stone.White;
             }
@@ -36,15 +40,42 @@ namespace Go
             AnalysisBoard.Redraw();
         }
 
-        private void rdRectangle_Checked(object sender, RoutedEventArgs e)
+        public void getNeighbors(BoardPoint currentPoint)
         {
-            BoardPainter.MouseHoverType = BoardHoverType.None;
+            if (currentPoint.X > 0)
+            {
+                Stone leftStone;
+                List<BoardPoint> boardPoints = BoardPainter.StoneList.Keys.ToList();
+                BoardPoint leftPoint = boardPoints.Where(x => x.X == currentPoint.X - 1 && x.Y == currentPoint.Y).FirstOrDefault();
+                if (leftPoint != null)
+                {
+                    leftStone = BoardPainter.StoneList[leftPoint];
+
+                    if (leftStone == BoardPainter.StoneList[currentPoint] && !leftPoint.IsInChain)
+                    {
+                        BoardPainter.Chains.Add(new List<BoardPoint> { currentPoint, leftPoint });
+                        leftPoint.IsInChain = true;
+                        currentPoint.IsInChain = true;
+                    }
+                    else if (leftPoint.IsInChain)
+                    {
+                        setChain(leftPoint, currentPoint);
+                    }
+                }
+            }
+
         }
 
-        private void rdStone_Checked(object sender, RoutedEventArgs e)
+        public void setChain(BoardPoint neighborPoint, BoardPoint currentPoint)
         {
-            if (BoardPainter != null)
-                BoardPainter.MouseHoverType = BoardHoverType.Stone;
+            foreach (List<BoardPoint> chain in BoardPainter.Chains)
+            {
+                if (chain.Contains(neighborPoint))
+                {
+                    chain.Add(currentPoint);
+                }
+            }
         }
+
     }
 }

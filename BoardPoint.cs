@@ -6,12 +6,21 @@ using System.Threading.Tasks;
 
 namespace Go
 {
-    public struct BoardPoint
+    public class BoardPoint
     {
+       
         public int X { get; set; }
         public int Y { get; set; }
+        public bool IsInChain { get; set; }
 
-        public BoardPoint (int x, int y) :this()
+       public BoardPoint()
+        {
+            X = -1;
+            Y = -1;
+            IsInChain = false;
+        }
+
+        public BoardPoint (int x, int y) 
         {
             X = x;
             Y = y;
