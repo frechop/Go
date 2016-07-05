@@ -30,6 +30,7 @@ namespace Go
             {
                 BoardPainter.StoneList.Add(new BoardPoint(e.Position.X, e.Position.Y), e.StoneColor);
                 BoardPainter.ToPlay = e.StoneColor ^ Stone.White;
+                AnalysisBoard.ToPlay = e.StoneColor ^ Stone.White;
             }
             BoardPainter.Redraw();
             AnalysisBoard.Redraw();

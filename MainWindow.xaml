@@ -35,9 +35,9 @@
             </goBoard:BoardPainter>
         </Viewbox>
 
-        <TextBlock Grid.Row="2" FontSize="30"
+        <TextBlock Grid.Row="3" FontSize="30"
                    HorizontalAlignment="Center"
-                   VerticalAlignment="Center" Margin="162,10,132,392" Grid.RowSpan="2"
+                   VerticalAlignment="Center" Margin="162,33,132,349"
                    >
 Analysis
         </TextBlock>
@@ -46,7 +46,7 @@ Analysis
                 BoardSize="{Binding ElementName=slBoardSize, Path=Value}"
                 MouseHoverType="Stone"
                 x:Name="AnalysisBoard"
-                MovePlayed="BoardPainter_MovePlayed" Height="135" >
+                MovePlayed="BoardPainter_MovePlayed" Height="96" >
             </goBoard:BoardPainter>
         </Viewbox>
     </Grid>
